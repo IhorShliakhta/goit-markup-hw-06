@@ -47,6 +47,7 @@ ul {
     font-weight: bold;
     font-style: normal;
     font-size: 26px;
+    color: #212121;
     text-decoration: none;
 }
 
@@ -57,6 +58,7 @@ ul {
 .logo-one {
     color: #2196F3;
 }
+
 
 header {
     font-style: normal;
@@ -89,17 +91,6 @@ header {
     border-radius: 2px;
 }
 
-
-.nav-link:hover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 4px;
-    width: 100%;
-    background-color: #2196F3;
-    border-radius: 2px;
-}
 
 .contacts {
     display: flex;
@@ -426,6 +417,10 @@ footer, footer a {
     color: #FFFFFF;
 }
 
+.logo-footer {
+    color: #FFFFFF;
+}
+
 .address-footer {
     color: white;
 }
@@ -683,9 +678,6 @@ footer, footer a {
     right: 0;
     margin-top: 8px;
     margin-right: 8px;
-    background-image:  xlink:url(./img/sprite.svg#icon-close);
-    background-repeat: no-repeat;
-    background-position: center;
     width: 30px;
     height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -721,15 +713,40 @@ footer, footer a {
     border-radius: 4px;
 }
 
+.input-group {
+    padding-left: 42px;
+}
 
 .lable-group {
     position: absolute;
-    margin-left: 10px;
-    top: 0;
+    top: 50%;
     left: 0;
-    transform: translatey(70%);
+    transform: translate(40px, -50%);
     font-size: 14px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) transform;
+}
+
+
+.input-group:not(:placeholder-shown) ~ label,
+.input-group:focus ~ label {
+    transform: translate(0%, -40px);
+    color: #2196F3;
+}
+
+.input-group:focus, textarea:focus {
+    border: 1px solid #2196F3;
+}
+
+.icon-modal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 18px;
     
+}
+
+.input-group:focus ~ .icon-modal {
+    fill: #2196F3;
 }
 
 textarea {
@@ -750,11 +767,35 @@ textarea::placeholder {
 }
 
 .form-options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
     margin-bottom: 30px;
+}
+
+.form-options,
+.checkbox-contract {
+    display: inline-flex;
+    align-items: center;
+}
+
+.checkbox ~ .checkbox-contract::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+
+.checkbox:checked ~ .checkbox-contract::before {
+    background-color: #2196F3;
+    border-color: transparent;
+    background-image: url(../img/Vector.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .checkbox-contract {
@@ -762,6 +803,11 @@ textarea::placeholder {
     font-style: var(--font-text);
     font-size: 14px;
     
+}
+
+.checkbox-contract a {
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .button-submit {
@@ -807,8 +853,17 @@ textarea::placeholder {
     color: rgba(163, 160, 160, 0.2);;
 }
 
+.form-footer {
+    display: flex;
+}
+
 .button2 {
-    padding: 10px 62px 10px 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    height: 50px;
+    width: 200px;
     color: #FFFFFF;
     border-radius: 4px;
     background-color: #2196F3;
@@ -817,10 +872,11 @@ textarea::placeholder {
     border: none;
 }
 
-.button2::after {
-    content: '';
-    background-image: url(/img/Vector.svg);
-    background-repeat: no-repeat;
+.icon-send {
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+    fill: #FFFFFF;
 }
 
 .input-footer {
